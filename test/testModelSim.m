@@ -1,6 +1,34 @@
 classdef testModelSim < matlab.unittest.TestCase
-    %TESTCALC Summary of this class goes here
+    %TESTMODELSIM Summary of this class goes here
     %   Detailed explanation goes here
+    properties
+        temp;
+        ogDir;
+    end
+    methods(TestClassSetup)
+        function testClassSetup(testCase)
+            sltest.testmanager.clear;
+            sltest.testmanager.clearResults;
+            testCase.ogDir = pwd;
+            testCase.temp = fullfile(pwd, 'temp');
+            mkdir(testCase.temp);
+            cd(testCase.temp);
+        end
+    end
+    
+    methods(TestClassTeardown)
+        function teardown(testCase)
+            sltest.testmanager.clear;
+            sltest.testmanager.clearResults;
+            sltest.testmanager.close;
+            A = dir(testCase.temp);
+            for k = 3:length(A)
+                delete([testCase.temp  filesep A(k).name])
+            end
+            cd(testCase.ogDir);
+            rmdir(testCase.temp);
+        end
+    end
     
     methods(Test)
         function testSquare(testCase)
