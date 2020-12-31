@@ -1,0 +1,25 @@
+
+name: MATLAB
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [batch-trigger]
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        stage: ['prod', 'stage', 'dev']
+    env:
+      MATHWORKS_LICENSING_ENDPOINT: ${{ matrix.stage }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v0
+      - name: Run tests
+        uses: matlab-actions/run-tests@v0
