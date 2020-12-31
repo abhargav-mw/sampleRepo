@@ -22,3 +22,7 @@ jobs:
         uses: matlab-actions/setup-matlab@v0
       - name: Run tests
         uses: matlab-actions/run-tests@v0
+        with:
+          test-results-junit: results.xml
+          code-coverage-cobertura: coverage.xml
+          source-folder: ./src/folderA;./src/folderB;./src/model
