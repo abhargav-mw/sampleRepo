@@ -15,8 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         stage: ['prod', 'stage', 'dev']
-    env:
-      MATHWORKS_LICENSING_ENDPOINT: ${{ matrix.stage }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up MATLAB
