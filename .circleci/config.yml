@@ -18,6 +18,8 @@ jobs:
           destination: test-results
       - store_test_results:
           path: test-results
+      - store_artifacts:
+          path: /artifacts
       - codecov/upload:
           file: code-coverage/coverage.xml
       - matlab/run-command:
