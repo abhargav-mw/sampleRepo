@@ -14,12 +14,7 @@ jobs:
           code-coverage-cobertura: code-coverage/coverage.xml
           source-folder: src/folderA;src/folderB;src/model
       - store_artifacts:
-          path: test-results/matlab/results.xml
-          destination: test-results
-      - store_test_results:
-          path: test-results
-      - store_artifacts:
-          path: test-results
+          path: /test-results
       - codecov/upload:
           file: code-coverage/coverage.xml
       - matlab/run-command:
