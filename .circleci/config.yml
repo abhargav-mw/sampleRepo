@@ -11,13 +11,12 @@ jobs:
       - matlab/install
       - matlab/run-tests:
           test-results-junit: test-results/matlab/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
+          code-coverage-cobertura:  test-results/code-coverage/coverage.xml
           source-folder: src/folderA;src/folderB;src/model
-      - store_artifacts:
-          path: /test-results
-      - codecov/upload:
-          file: code-coverage/coverage.xml
       - matlab/run-command:
           command: ver
       - matlab/run-command:
           command: userpath
+      - store_artifacts:
+          path: test-results
+          destination: artifacts
