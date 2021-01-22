@@ -12,6 +12,7 @@ classdef testModelSim < matlab.unittest.TestCase
             testCase.ogDir = pwd;
             testCase.temp = fullfile(pwd, 'temp');
             mkdir(testCase.temp);
+            matlab.unittest.fixtures.PathFixture(testCase.temp);
             cd(testCase.temp);
         end
     end
