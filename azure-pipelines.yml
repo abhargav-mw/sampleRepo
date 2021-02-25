@@ -11,7 +11,8 @@ pool:
   name: Default
   #vmImage: $(imageName)
 steps:
-  - task: InstallMATLAB@0
+  - powershell: Write-Host '##vso[task.prependpath]C:\Program Files\MATLAB\R2020b\bin'
+  #- task: InstallMATLAB@0
   - task: RunMATLABTests@0
     inputs:
       testResultsJUnit: 'test-results/results.xml'
